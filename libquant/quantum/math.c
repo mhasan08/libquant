@@ -11,6 +11,16 @@
 #include <math.h>
 #include <stdlib.h>
 
+void swap_qubit_basis(qubit *q){
+    complex alpha = q->alpha;
+    q->alpha = q->beta;
+    q->beta = alpha;
+}
+
+void no_swap_basis(qubit *q){
+    return;
+}
+
 double get_complex_magnitude(complex c){
     return sqrt(pow(c.real, 2) + pow(c.img, 2));
 }

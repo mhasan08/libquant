@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "quantum.h"
 
+void swap_qubit_basis(qubit *);
+void no_swap_basis(qubit *);
 double get_complex_magnitude(complex);
 complex add(complex, complex);
 complex scalar_multiply(double, complex);

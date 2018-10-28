@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include "quantum/operation.h"
 
+#ifdef UNIT_TEST
+
+#include "unit_tests/test.h"
+
+#endif
+
 int main(int argc, const char * argv[]) {
     
     //create some qubit
@@ -25,7 +31,9 @@ int main(int argc, const char * argv[]) {
     
     clean(2, p, q);
     
-    //double *kp = test_KP();
+#ifdef UNIT_TEST
+    perform_all_tests();
+#endif
     
     return 0;
 }

@@ -13,6 +13,7 @@
 #include "operation.h"
 #include "quantum.h"
 #include "math.h"
+#include "plot/plot.h"
 
 void zero_basis(qubit *q){
     complex c1, c2;
@@ -111,6 +112,11 @@ void clean(int count, ...){
 
 
 //unit tests
+
+void plot_qubit(){
+    //to do
+}
+
 double *test_KP(){
     double *h1 = getHadamard();
     double *h2 = getHadamard();

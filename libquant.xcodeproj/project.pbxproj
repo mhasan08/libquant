@@ -10,6 +10,9 @@
 		9FF4F9BF2182C948008396AE /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9BE2182C948008396AE /* main.c */; };
 		9FF4F9C92182CA85008396AE /* operation.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9C82182CA85008396AE /* operation.c */; };
 		9FF4F9CC21836A91008396AE /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9CB21836A91008396AE /* math.c */; };
+		9FF4F9D021859EFA008396AE /* plot.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9CF21859EFA008396AE /* plot.c */; };
+		9FF4F9D42185A0A3008396AE /* gate.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9D32185A0A3008396AE /* gate.c */; };
+		9FF4F9D82185AFC1008396AE /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4F9D72185AFC1008396AE /* test.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +35,12 @@
 		9FF4F9C82182CA85008396AE /* operation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = operation.c; sourceTree = "<group>"; };
 		9FF4F9CA21836A91008396AE /* math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
 		9FF4F9CB21836A91008396AE /* math.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
+		9FF4F9CE21859EFA008396AE /* plot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plot.h; sourceTree = "<group>"; };
+		9FF4F9CF21859EFA008396AE /* plot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plot.c; sourceTree = "<group>"; };
+		9FF4F9D22185A0A3008396AE /* gate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gate.h; sourceTree = "<group>"; };
+		9FF4F9D32185A0A3008396AE /* gate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gate.c; sourceTree = "<group>"; };
+		9FF4F9D62185AFC1008396AE /* test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
+		9FF4F9D72185AFC1008396AE /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +73,7 @@
 		9FF4F9BD2182C948008396AE /* libquant */ = {
 			isa = PBXGroup;
 			children = (
+				9FF4F9D52185AF67008396AE /* unit_tests */,
 				9FF4F9C52182C95B008396AE /* quantum */,
 				9FF4F9BE2182C948008396AE /* main.c */,
 			);
@@ -73,6 +83,8 @@
 		9FF4F9C52182C95B008396AE /* quantum */ = {
 			isa = PBXGroup;
 			children = (
+				9FF4F9D12185A030008396AE /* gates */,
+				9FF4F9CD2184DBB4008396AE /* plot */,
 				9FF4F9C62182C9C8008396AE /* quantum.h */,
 				9FF4F9C72182CA85008396AE /* operation.h */,
 				9FF4F9C82182CA85008396AE /* operation.c */,
@@ -80,6 +92,33 @@
 				9FF4F9CB21836A91008396AE /* math.c */,
 			);
 			path = quantum;
+			sourceTree = "<group>";
+		};
+		9FF4F9CD2184DBB4008396AE /* plot */ = {
+			isa = PBXGroup;
+			children = (
+				9FF4F9CE21859EFA008396AE /* plot.h */,
+				9FF4F9CF21859EFA008396AE /* plot.c */,
+			);
+			path = plot;
+			sourceTree = "<group>";
+		};
+		9FF4F9D12185A030008396AE /* gates */ = {
+			isa = PBXGroup;
+			children = (
+				9FF4F9D22185A0A3008396AE /* gate.h */,
+				9FF4F9D32185A0A3008396AE /* gate.c */,
+			);
+			path = gates;
+			sourceTree = "<group>";
+		};
+		9FF4F9D52185AF67008396AE /* unit_tests */ = {
+			isa = PBXGroup;
+			children = (
+				9FF4F9D62185AFC1008396AE /* test.h */,
+				9FF4F9D72185AFC1008396AE /* test.c */,
+			);
+			path = unit_tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF4F9D42185A0A3008396AE /* gate.c in Sources */,
 				9FF4F9BF2182C948008396AE /* main.c in Sources */,
 				9FF4F9CC21836A91008396AE /* math.c in Sources */,
+				9FF4F9D82185AFC1008396AE /* test.c in Sources */,
+				9FF4F9D021859EFA008396AE /* plot.c in Sources */,
 				9FF4F9C92182CA85008396AE /* operation.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

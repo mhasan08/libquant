@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "quantum.h"
 
+#define UNIT_TEST 1
+
 double mag(complex);
 qubit *create_qubit(enum QUBIT_STATE);
 void hadamard(qubit *);
@@ -19,7 +21,7 @@ void hadamard(qubit *);
 void pipe_out(int, ...);
 void clean(int, ...);
 
-
+void plot_qubit();
 double *test_KP(void);
 
 #endif /* operation_h */
