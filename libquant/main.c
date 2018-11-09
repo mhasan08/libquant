@@ -30,6 +30,7 @@ int main(int argc, const char * argv[]) {
     pipe_out(1, q);
     
     clean(2, p, q);
+
     
 #ifdef UNIT_TEST
     perform_all_tests();

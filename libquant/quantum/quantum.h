@@ -27,8 +27,9 @@ typedef struct qubit{
     complex beta;
 }qubit;
 
-typedef struct zero{
-    
-}zero;
+typedef struct quantum_register{
+    qubit *q;
+    struct quantum_register *link;
+}quantum_register;
 
 #endif /* quantum_h */

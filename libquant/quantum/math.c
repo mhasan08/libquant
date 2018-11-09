@@ -40,6 +40,13 @@ complex scalar_multiply(double scalar, complex c){
     return res;
 }
 
+complex multiply(complex c1, complex c2){
+    complex res;
+    res.real = (c1.real * c2.real) + ((-1) * (c1.img * c2.img));
+    res.img = (c1.real * c2.img) + (c1.img * c2.real);
+    return res;
+}
+
 void printMat(double *ptr, int r, int c){
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
@@ -64,7 +71,7 @@ double *kronecker_product(double *m1, uint8_t r1, uint8_t c1, double *m2, uint8_
         }
     }
     
-    printMat(kr, (r1*r2), (c1*c2));
+    //printMat(kr, (r1*r2), (c1*c2));
     
     return kr;
 }

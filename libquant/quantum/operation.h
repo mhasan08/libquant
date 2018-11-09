@@ -16,12 +16,16 @@
 
 double mag(complex);
 qubit *create_qubit(enum QUBIT_STATE);
+quantum_register *create_quantum_register(int, enum QUBIT_STATE);
+int num_of_qubits(quantum_register *);
+void hadamard_n(quantum_register *);
 void hadamard(qubit *);
 
 void pipe_out(int, ...);
+void clean_n(quantum_register *);
 void clean(int, ...);
 
-void plot_qubit();
+void plot(int, ...);
 double *test_KP(void);
 
 #endif /* operation_h */

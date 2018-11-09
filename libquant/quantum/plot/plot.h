@@ -11,4 +11,6 @@
 
 #include <stdio.h>
 
+void plot_qubits();
+
 #endif /* plot_h */

@@ -6,6 +6,8 @@
 //  Copyright © 2018 Munawar Hasan. All rights reserved.
 //
 
+#include <math.h>
+
 #include "gate.h"
 #include "../quantum.h"
 #include "../math.h"
@@ -60,4 +62,11 @@ void toffoli(qubit *p, qubit *q, qubit *r){
     qubit *res = and(p, q);
     cnot(r, res);
     clean(1, res);
+}
+
+void phase_shift(qubit *q, double angle){
+    complex c1;
+    c1.real = cos(angle);
+    c1.img = sin(angle);
+    q->beta = multiply(q->beta, c1);
 }

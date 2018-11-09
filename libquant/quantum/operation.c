@@ -14,6 +14,7 @@
 #include "quantum.h"
 #include "math.h"
 #include "plot/plot.h"
+#include "io.h"
 
 void zero_basis(qubit *q){
     complex c1, c2;
@@ -74,6 +75,56 @@ enum QUBIT_STATE resolve_qubit_state(qubit *q){
         return SUPERIMPOSED;
 }
 
+int num_of_qubits(quantum_register *qreg){
+    if (qreg == NULL) {
+        return -1;
+    }
+    int count = 0;
+    while (qreg != NULL) {
+        count++;
+        qreg = qreg->link;
+    }
+    return count;
+}
+
+void add_to_register(quantum_register **qreg, enum QUBIT_STATE state){
+    if ((*qreg) == NULL) {
+        (*qreg) = (quantum_register *)malloc(sizeof(quantum_register));
+        (*qreg)->link = NULL;
+        (*qreg)->q = create_qubit(state);
+    }else{
+        quantum_register *temp = *qreg;
+        while (temp->link != NULL)
+            temp = temp->link;
+        temp->link = (quantum_register *)malloc(sizeof(quantum_register));
+        temp->link->link = NULL;
+        temp->link->q = create_qubit(state);
+    }
+}
+
+quantum_register *create_quantum_register(int num_of_qubits, enum QUBIT_STATE state){
+    quantum_register *qreg = NULL;
+    for (int i = 1; i <= num_of_qubits; i++)
+        add_to_register(&qreg, state);
+    return qreg;
+}
+
+void hadamard_n(quantum_register *qreg){
+    double *h = getHadamard();
+    
+    while (qreg != NULL) {
+        complex alpha, beta;
+        alpha = add(scalar_multiply(h[0], qreg->q->alpha), scalar_multiply(h[1], qreg->q->beta));
+        beta = add(scalar_multiply(h[2], qreg->q->alpha), scalar_multiply(h[3], qreg->q->beta));
+        
+        qreg->q->alpha = alpha;
+        qreg->q->beta = beta;
+        
+        qreg = qreg->link;
+    }
+    
+    free(h);
+}
 
 void hadamard(qubit *q){
     double *h = getHadamard();
@@ -99,6 +150,9 @@ void pipe_out(int count, ...){
     }
 }
 
+void clean_n(quantum_register *qreg){
+    free(qreg);
+}
 
 void clean(int count, ...){
     va_list valist;
@@ -110,12 +164,23 @@ void clean(int count, ...){
     va_end(valist);
 }
 
+void plot(int count, ...){
+    va_list valist;
+    va_start(valist, count);
+    
+    double complex_mag[count * 2];
+    
+    for (int i = 0; i < count; i++) {
+        qubit *q = va_arg(valist, qubit *);
+        complex_mag[i * 2] = get_complex_magnitude(q->alpha);
+        complex_mag[i * 2 + 1] = get_complex_magnitude(q->beta);
+    }
+    write_to_file(complex_mag, count * 2);
+    plot_qubits();
+}
+
 
 //unit tests
-
-void plot_qubit(){
-    //to do
-}
 
 double *test_KP(){
     double *h1 = getHadamard();

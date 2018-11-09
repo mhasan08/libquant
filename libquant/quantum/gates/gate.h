@@ -10,5 +10,7 @@
 #define gate_h
 
 #include <stdio.h>
+#include "../quantum.h"
+void phase_shift(qubit *, double);
 
 #endif /* gate_h */

@@ -6,4 +6,13 @@
 //  Copyright © 2018 Munawar Hasan. All rights reserved.
 //
 
+#include <stdlib.h>
+
 #include "plot.h"
+
+void plot_qubits(){
+    int status = system("gnuplot --persist qubit.p");
+    if (status < 0) {
+        perror("some error occured in plotting the graph");
+    }
+}
