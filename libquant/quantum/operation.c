@@ -164,6 +164,18 @@ void clean(int count, ...){
     va_end(valist);
 }
 
+void plot_n(quantum_register *qreg){
+    int count = num_of_qubits(qreg);
+    double complex_mag[count * 2];
+    for (int i = 0; i < count; i++) {
+        complex_mag[i] = get_complex_magnitude(qreg->q->alpha);
+        complex_mag[i+1] = get_complex_magnitude(qreg->q->beta);
+        qreg = qreg->link;
+    }
+    write_to_file(complex_mag, count * 2);
+    plot_qubits();
+}
+
 void plot(int count, ...){
     va_list valist;
     va_start(valist, count);

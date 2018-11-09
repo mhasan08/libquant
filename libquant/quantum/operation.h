@@ -25,6 +25,7 @@ void pipe_out(int, ...);
 void clean_n(quantum_register *);
 void clean(int, ...);
 
+void plot_n(quantum_register *);
 void plot(int, ...);
 double *test_KP(void);
 

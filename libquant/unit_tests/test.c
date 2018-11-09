@@ -18,6 +18,9 @@ void check_register(){
     int x = num_of_qubits(qreg);
     //printf("qubits: %d\n", x);
     hadamard_n(qreg);
+    
+    plot_n(qreg);
+    
     clean_n(qreg);
 }
 
@@ -31,7 +34,7 @@ void perform_all_tests(){
     
     qubit *q1 = create_qubit(ZERO);
     hadamard(q1);
-    plot(1, q1);
+    //plot(1, q1);
     
     check_register();
 }
